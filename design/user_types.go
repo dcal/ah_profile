@@ -6,7 +6,7 @@ import (
 )
 
 var UserPayload = Type("UserPayload", func() {
-	Attribute("id", String, "The uuid")
+	Attribute("id", Integer, "The primary key")
 	Attribute("firstName", String, "The user's first name")
 	Attribute("lastName", String, "The user's last name")
 	Attribute("prescription", String, "The user's prescription")
