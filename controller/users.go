@@ -2,6 +2,7 @@ package controller
 
 import (
 	"database/sql"
+	"log"
 
 	"github.com/alliancehealth/ah_profile/app"
 	"github.com/alliancehealth/ah_profile/db"
@@ -11,14 +12,14 @@ import (
 // UsersController implements theusers resource.
 type UsersController struct {
 	db *sql.DB
-	goa.Controller
+	*goa.Controller
 }
 
 // NewUsersController creates a users controller.
-func NewUsersController(service goa.Service) app.UsersController {
+func NewUsersController(service *goa.Service) app.UsersController {
 	data, err := db.Connection()
 	if err != nil {
-		service.Error(err.Error())
+		log.Println(err.Error())
 	}
 	return &UsersController{Controller: service.NewController("users"), db: data}
 }
@@ -43,7 +44,7 @@ func (c *UsersController) Create(ctx *app.CreateUsersContext) error {
 }
 
 func (c *UsersController) Show(ctx *app.ShowUsersContext) error {
-	m := db.UserModel{ID: ctx.UserId}
+	m := db.UserModel{ID: ctx.UserID}
 	m, err := db.ShowUser(m)
 	if err != nil {
 		return err
@@ -66,7 +67,7 @@ func (c *UsersController) List(ctx *app.ListUsersContext) error {
 }
 
 func (c *UsersController) Delete(ctx *app.DeleteUsersContext) error {
-	m := db.UserModel{ID: ctx.UserId}
+	m := db.UserModel{ID: ctx.UserID}
 	m, err := db.DeleteUser(m)
 	if err != nil {
 		return err

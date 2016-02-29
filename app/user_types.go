@@ -24,8 +24,8 @@ type UserPayload struct {
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The user's first name
 	FirstName *string `json:"firstName,omitempty" xml:"firstName,omitempty"`
-	// The uuid
-	ID *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The primary key
+	ID *int `json:"id,omitempty" xml:"id,omitempty"`
 	// The user's last name
 	LastName *string `json:"lastName,omitempty" xml:"lastName,omitempty"`
 	// The date the record was updated, in UTC

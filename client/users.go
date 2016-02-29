@@ -12,7 +12,8 @@ import (
 // CreateUsersPayload is the data structure used to initialize the users create request body.
 type CreateUsersPayload struct {
 	// 1 = active, 0 = inactive
-	Active string `json:"active" xml:"active"`
+	Active    string  `json:"active" xml:"active"`
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	// The user's email
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The user's first name

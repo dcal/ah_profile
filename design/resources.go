@@ -20,6 +20,7 @@ var _ = Resource("users", func() {
 			Member("email")
 			Member("prescription")
 			Member("active")
+			Member("created_at")
 			Required("firstName")
 			Required("lastName")
 			Required("phone")
@@ -37,7 +38,7 @@ var _ = Resource("users", func() {
 		)
 		Description("Show a user")
 		Params(func() {
-			Param("user_id", String)
+			Param("user_id", Integer)
 		})
 		Response(OK, func() {
 			Media(UserMedia)
@@ -68,7 +69,7 @@ var _ = Resource("users", func() {
 		)
 		Description("Delete a user")
 		Params(func() {
-			Param("user_id", String)
+			Param("user_id", Integer)
 		})
 		Response(OK, func() {
 			Media(UserMedia)
